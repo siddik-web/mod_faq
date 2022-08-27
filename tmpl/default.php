@@ -9,7 +9,9 @@
  */
 
 defined('_JEXEC') or die;
-$id = uniqid();
+
+list($id) = array_slice(range(rand(0,999), 999), 0, 1);
+
 ?>
 
 <script type="application/ld+json">
@@ -129,5 +131,7 @@ $id = uniqid();
             <p class="faq-text"><?php echo $faq->answer; ?></p>
         </label>
    </div>
+   <?php $id++;?>
     <?php endforeach;?>
+    
 </div>
