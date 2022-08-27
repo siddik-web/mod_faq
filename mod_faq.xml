@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+    <name>mod_faq</name>
+    <author>Md Siddiqur Rahman</author>
+    <creationDate>27 Aug, 2022</creationDate>
+    <copyright>(C) 2022 Md Siddiqur Rahman</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>siddikcoder@gmail.com</authorEmail>
+	<authorUrl>https://siddiqur.com</authorUrl>
+	<version>1.0.0</version>
+	<description>Advanced FAQ Module</description>
+
+    <files>
+        <filename module="mod_faq">mod_faq.php</filename>
+        <folder>tmpl</folder>
+    </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="advance_faq"
+                    type="subform"
+                    label="Advanced FAQ's"
+                    icon="list"
+                    multiple="true"
+                >
+                    <form hidden="true" name="faq_item" repeat="true">
+                        <field
+                            name="question"
+                            type="text"
+                            label="Question"
+                        />
+                        <field
+                            name="answer"
+                            type="textarea"
+                            label="Answer"
+                            rows="3"
+                        />
+                    </form>
+                </field>
+                
+            </fieldset>
+        </fields>
+    </config>
+
+</extension>
