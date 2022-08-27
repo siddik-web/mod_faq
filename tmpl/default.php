@@ -9,7 +9,7 @@
  */
 
 defined('_JEXEC') or die;
-$id = 0;
+$id = uniqid();
 ?>
 
 <script type="application/ld+json">
@@ -129,6 +129,5 @@ $id = 0;
             <p class="faq-text"><?php echo $faq->answer; ?></p>
         </label>
    </div>
-    <?php $id++;?>
     <?php endforeach;?>
 </div>
