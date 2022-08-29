@@ -11,7 +11,7 @@
         </downloads>
         <maintainer>Md Siddiqur Rahman</maintainer>
         <maintainerurl>https://siddiqur.com</maintainerurl>
-        <targetplatform name="joomla" version="4.0"/>
+        <targetplatform name="joomla" version="4.(1|2|3|4)"/>
         <client>site</client>
     </update>
 </updates>
