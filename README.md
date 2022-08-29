@@ -1,5 +1,5 @@
 # mod_faq
-Advanced FAQs with structured data is a Joomla module work in both Joomla 4 and Joomla 3.
+Advanced FAQs with structured data is a Joomla module work in both Joomla 4.
 
 <img width="992" alt="image" src="https://user-images.githubusercontent.com/53170094/187039456-96fffad0-8300-46b7-bc4e-30a60de3e837.png">
 
