@@ -2,12 +2,12 @@
 <updates>
     <update>
         <name>Advanced FAQ Module</name>
-        <description>This is mod_faq 1.0.2</description>
+        <description>This is mod_faq 1.0.3</description>
         <element>mod_faq</element>
         <type>module</type>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/siddik-web/mod_faq/releases/download/v1.0.2/mod_faq_v1.0.2.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/siddik-web/mod_faq/releases/download/v1.0.3/mod_faq_v1.0.3.zip</downloadurl>
         </downloads>
         <maintainer>Md Siddiqur Rahman</maintainer>
         <maintainerurl>https://siddiqur.com</maintainerurl>

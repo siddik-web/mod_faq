@@ -3,7 +3,7 @@ const zip = require("gulp-zip");
 const clean = require("gulp-clean");
 
 
-const VERSION = "1.0.2";
+const VERSION = "1.0.3";
 const ZIP_NAME = `mod_faq_v${VERSION}.zip`;
 
 gulp.task("copy_module_faq", function () {

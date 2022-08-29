@@ -16,7 +16,7 @@ use Joomla\CMS\Log\Log;
 /**
  * Script file of Faq module
  * 
- * @since 1.0.0
+ * @since 1.0.3
  */
 class ModFaqInstallerScript
 {
@@ -26,7 +26,7 @@ class ModFaqInstallerScript
      *
      * @return void
      *
-     * @since 1.0.2
+     * @since 1.0.3
      */
     public function __construct()
     {
