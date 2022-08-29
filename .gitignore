@@ -4,6 +4,7 @@
 !.gitignore
 !gulpfile.js
 !package.json
+!README.md
 
 # ********* Component administator ********* #
 /administrator/*
