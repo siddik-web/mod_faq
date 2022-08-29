@@ -1,89 +1,41 @@
-const { src, dest, series } = require('gulp');
-const clean = require("gulp-clean");
-const zip = require('gulp-zip');
+var gulp = require("gulp");
+var zip = require("gulp-zip");
+var clean = require("gulp-clean");
 
 
-const config = {
-    srcPath: './',
-    buildPath: './dist/module/',
-    rootPath: './dist/',
-    moduleName: 'faq',
-    mod_package_name: 'mod_faq_v1.0.2.zip',
-    moduleExts: ['xml','php','js','css','jpg','png','gif','ttf','otf','woff','woff2','svg','eot']
-}
+const VERSION = "1.0.2";
+const ZIP_NAME = `mod_faq_v${VERSION}.zip`;
 
-const tasks = {
-    manifest: {
-        src: [config.srcPath + 'modules/mod_' + config.moduleName + '/' + config.moduleName + '.xml', config.srcPath + 'modules/mod_' + config.moduleName + '/script.php'],
-        dest: config.buildPath
-    },
-    modules: [
-        {
-            name: 'faq',
-            exts: config.moduleExts
-        }
-    ],
-}
+gulp.task("copy_module_faq", function () {
+  return gulp.src("./modules/mod_faq/**/*.*").pipe(gulp.dest("build/mod_faq"));
+});
 
-// clean rootpath
-function cleanDist() {
-    return src("./dist", { read: false, allowEmpty: true }).pipe(clean());
-}
 
-// manifest task
-function manifest() {
-    return src(tasks.manifest.src, {allowEmpty: true})
-    .pipe(dest(tasks.manifest.dest));
-}
+gulp.task("copy_lang_mod", function () {
+  return gulp.src(["./language/en-GB/mod_faq.ini", "./language/en-GB/mod_faq.sys.ini"])
+  .pipe(gulp.dest("build/mod_faq/language/en-GB/"));
+});
 
-// modules tasks
-function modules(callback) {
-    let modules = typeof (tasks.modules) == 'object' && tasks.modules instanceof Array && tasks.modules.length > 0 ? tasks.modules : false;
-    let module_tasks = [];
 
-    if (modules) {
-        modules.map(module => {
-            let mod_task =  (taskDone) => {
-                src([ config.srcPath + 'modules/mod_' + module.name + '/**/*.{' + module.exts.join(',') + '}', config.srcPath + 'language/en-GB/en-GB.mod_' + module.name + '*.ini'], {allowEmpty: true})
-                .pipe(dest(config.buildPath + '/modules/mod_' + module.name + '/'));
-                taskDone();
-            }
-            module_tasks.push(mod_task);
-        });
-    }
-    return series(...module_tasks, seriesDone => {
-        seriesDone();
-        callback();
-    })();
-}
+gulp.task(
+  "copy",
+  gulp.series(
+    "copy_module_faq",
+    "copy_lang_mod",
+  ),
+);
 
-// modules language
-function moduleLanguages(callback) {
-    let modules = typeof (tasks.modules) == 'object' && tasks.modules instanceof Array && tasks.modules.length > 0 ? tasks.modules : false;
-    let module_language_tasks = [];
-    if (modules) {
-        modules.map(module => {
-            let mod_task =  (taskDone) => {
-                src([ config.srcPath + 'language/en-GB/en-GB.mod_' + module.name + '.ini', config.srcPath + 'language/en-GB/en-GB.mod_' + module.name + '.sys.ini'], {allowEmpty: true})
-                .pipe(dest(config.buildPath + '/modules/mod_' + module.name + '/language'));
-                taskDone();
-            }
-            module_language_tasks.push(mod_task);
-        });
-    }
-    return series(...module_language_tasks, seriesDone => {
-        seriesDone();
-        callback();
-    })();
-}
+gulp.task("zip_it", function () {
+  return gulp.src("./build/**/*.*").pipe(zip(ZIP_NAME)).pipe(gulp.dest("./build"));
+});
 
-// make module package
-function modulePackage(callback) {
-    return src(config.buildPath + '/**')
-    .pipe(zip(config.mod_package_name))
-    .pipe(dest(config.buildPath));
-}
+gulp.task("clean_build", function () {
+  return gulp.src("./build", { read: false, allowEmpty: true }).pipe(clean());
+});
 
-exports.default = series(
-    cleanDist, modules, manifest, moduleLanguages, modulePackage
-)
+gulp.task(
+  "default",
+  gulp.series("clean_build", "copy","zip_it", function () {
+    return gulp.src("./build/**/*.*").pipe(zip(ZIP_NAME)).pipe(gulp.dest("./build"));
+  }),
+);

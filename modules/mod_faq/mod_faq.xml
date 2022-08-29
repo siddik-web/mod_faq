@@ -18,6 +18,11 @@
         <folder>language</folder>
         <filename>mod_faq.xml</filename>
     </files>
+
+    <languages>
+		<language tag="en-GB">language/en-GB/mod_faq.ini</language>
+		<language tag="en-GB">language/en-GB/mod_faq.sys.ini</language>
+	</languages>
     
     <updateservers>
         <server type="extension" priority="1" name="MOD_FAQ">https://raw.githubusercontent.com/siddik-web/mod_faq/master/faq_update.xml</server>
