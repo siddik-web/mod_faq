@@ -1,6 +1,6 @@
-var gulp = require("gulp");
-var zip = require("gulp-zip");
-var clean = require("gulp-clean");
+const gulp = require("gulp");
+const zip = require("gulp-zip");
+const clean = require("gulp-clean");
 
 
 const VERSION = "1.0.2";
