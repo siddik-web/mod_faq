@@ -1,0 +1,34 @@
+# ********* Ignore all except gitignore ********* #
+/**/**/*.DS_Store
+/*
+!.gitignore
+!gulpfile.js
+!package.json
+
+# ********* Component administator ********* #
+/administrator/*
+
+# ********* Component site ********* #
+/components/*
+
+# ********* Site languages ********* #
+!/language
+/language/*
+!/language/en-GB
+/language/en-GB/*
+
+# Module Languages #
+!/language/en-GB/en-GB.mod_faq*.ini
+
+# ********* Modules ********* #
+!/modules
+/modules/*
+!/modules/mod_faq
+/modules/**/**/*.ini
+
+
+# ********* Plugins ********* #
+/plugins/*
+
+/api
+/installation

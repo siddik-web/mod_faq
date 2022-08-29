@@ -1,0 +1,14 @@
+{
+  "name": "mod_faq",
+  "version": "1.0.2",
+  "description": "Advanced FAQs With Structured Data Joomla Module",
+  "main": "index.php",
+  "repository": "https://github.com/siddik-web/mod_faq",
+  "author": "Md Siddiqru Rahman",
+  "license": "GPLv2",
+  "dependencies": {
+    "del": "^7.0.0",
+    "gulp": "^4.0.2",
+    "gulp-zip": "^5.1.0"
+  }
+}

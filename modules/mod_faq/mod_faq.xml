@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="4.0" client="site" method="upgrade">
+    <name>MOD_FAQ</name>
+    <author>Md Siddiqur Rahman</author>
+    <creationDate>27 Aug, 2022</creationDate>
+    <copyright>(C) 2022 Md Siddiqur Rahman</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>siddikcoder@gmail.com</authorEmail>
+	<authorUrl>https://siddiqur.com</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_FAQ_XML_DESCRIPTION</description>
+
+    <scriptfile>script.php</scriptfile>
+
+    <files>
+        <filename module="mod_faq">mod_faq.php</filename>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+        <filename>mod_faq.xml</filename>
+    </files>
+    
+    <updateservers>
+        <server type="extension" priority="1" name="MOD_FAQ">https://raw.githubusercontent.com/siddik-web/mod_faq/master/faq_update.xml</server>
+    </updateservers>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="advance_faq"
+                    type="subform"
+                    label="MOD_FAQ_LABEL"
+                    icon="list"
+                    multiple="true"
+                >
+                    <form hidden="true" name="faq_item" repeat="true">
+                        <field
+                            name="question"
+                            type="text"
+                            label="MOD_FAQ_QUESTION_LABEL"
+                        />
+                        <field
+                            name="answer"
+                            type="textarea"
+                            label="MOD_FAQ_ANSWER_LABEL"
+                            rows="3"
+                        />
+                    </form>
+                </field>
+                
+            </fieldset>
+            <fieldset name="advanced">
+
+                <field
+                name="layout"
+                type="modulelayout"
+                label="JFIELD_ALT_LAYOUT_LABEL"
+                class="custom-select"
+                />
+
+                <field
+                name="moduleclass_sfx"
+                type="textarea"
+                label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                rows="3"
+                />
+
+                <field
+                name="cache"
+                type="list"
+                label="COM_MODULES_FIELD_CACHING_LABEL"
+                default="0"
+                >
+                <option value="1">JGLOBAL_USE_GLOBAL</option>
+                <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+
+                <field
+                name="cache_time"
+                type="number"
+                label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                default="0"
+                />
+
+                <field
+                name="cachemode"
+                type="hidden"
+                default="itemid"
+                >
+                <option value="itemid"></option>
+            </field>
+
+            </fieldset> 
+        </fields>
+    </config>
+
+</extension>
