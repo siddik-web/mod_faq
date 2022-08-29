@@ -27,7 +27,7 @@ const tasks = {
 
 // clean rootpath
 function cleanDist() {
-    return src("./build", { read: false, allowEmpty: true }).pipe(clean());
+    return src("./dist", { read: false, allowEmpty: true }).pipe(clean());
 }
 
 // manifest task
