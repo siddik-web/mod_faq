@@ -18,7 +18,7 @@ use Joomla\CMS\Log\Log;
  * 
  * @since 1.0.3
  */
-class ModFaqInstallerScript
+class mod_faqInstallerScript
 {
 
     /**
