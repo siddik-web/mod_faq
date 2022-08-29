@@ -1,6 +1,6 @@
-const { series, parallel } = require('gulp');
+const { series } = require('gulp');
 const { src, dest } = require('gulp');
-const del = require('del');
+const clean = require("gulp-clean");
 const zip = require('gulp-zip');
 
 
@@ -15,7 +15,7 @@ const config = {
 
 const tasks = {
     manifest: {
-        src: [config.srcPath + 'modules/mod_' + config.moduleName + '/' + config.moduleName + '.xml', config.srcPath + 'administrator/components/com_' + config.moduleName + '/installer.script.php'],
+        src: [config.srcPath + 'modules/mod_' + config.moduleName + '/' + config.moduleName + '.xml', config.srcPath + 'modules/mod_' + config.moduleName + '/script.php'],
         dest: config.buildPath
     },
     modules: [
@@ -27,26 +27,14 @@ const tasks = {
 }
 
 // clean rootpath
-function clean() {
-    return del([config.rootPath]);
+function cleanDist() {
+    return src("./build", { read: false, allowEmpty: true }).pipe(clean());
 }
 
 // manifest task
 function manifest() {
     return src(tasks.manifest.src, {allowEmpty: true})
     .pipe(dest(tasks.manifest.dest));
-}
-
-// admin tasks
-function admin() {
-    return src(tasks.admin.src)
-    .pipe(dest(tasks.admin.dest));
-}
-
-// site tasks 
-function site() {
-    return src(tasks.site.src)
-    .pipe(dest(tasks.site.dest));
 }
 
 // modules tasks
@@ -90,14 +78,13 @@ function moduleLanguages(callback) {
     })();
 }
 
-// make component package
-function componentPackage(callback) {
+// make module package
+function modulePackage(callback) {
     return src(config.buildPath + '/**')
-    .pipe(zip(config.com_package_name))
+    .pipe(zip(config.mod_package_name))
     .pipe(dest(config.buildPath));
 }
 
 exports.default = series(
-    clean, modules, plugins, manifest, admin, site, moduleLanguages, adminLanguage, siteLanguage, 
-    componentPackage
+    cleanDist, modules, manifest, moduleLanguages, modulePackage
 )

@@ -1,5 +1,5 @@
 <?php
-use Joomla\CMS\Installer\InstallerAdapter;
+
 /**
  * @package     Joomla.Site
  * @subpackage  mod_faq
@@ -13,7 +13,6 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
-
 /**
  * Script file of Faq module
  * 
